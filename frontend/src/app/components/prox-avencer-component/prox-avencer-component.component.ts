@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from '../../models/produtoModel';
-import { ProdutoService } from '../../services/lista.service';
+import { Produto } from '../../models/ProdutoModel';
+import { ProdutoService } from '../../services/Produto.service';
 
 @Component({
   selector: 'app-prox-avencer-component',

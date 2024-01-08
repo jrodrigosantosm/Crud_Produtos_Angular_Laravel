@@ -1,9 +1,9 @@
 export interface Produto {
-    id: number;
-    nome: string;
-    categoria_id: number;
-    preco: number;
-    validade: Date;
-    estoque: number;
-    perecivel: boolean;
+  id: number;
+  nome: string;
+  preco: number;
+  estoque: number;
+  validade: string;
+  perecivel: boolean;
+  categoria: string;
   }

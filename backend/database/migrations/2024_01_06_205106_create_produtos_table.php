@@ -12,13 +12,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->decimal('preco', 8, 2);
+            $table->decimal('estoque', 8, 2);
             $table->date('validade');
-            $table->unsignedBigInteger('categoria_id');
+            $table->boolean('perecivel')->default(false);
+            $table->string('categoria');
             $table->timestamps();
-        });
-
-        Schema::table('produtos', function (Blueprint $table) {
-            $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }
 

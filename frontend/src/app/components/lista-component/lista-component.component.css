@@ -1,0 +1,46 @@
+/* lista-geral-produtos.component.css ou seu arquivo de estilos global */
+.tabela {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+.tabela th, .tabela td {
+  border: 1px solid #ddd; 
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela th {
+  background-color: #f2f2f2;
+}
+
+.cabecalho{
+display: flex;
+justify-content: center;
+}
+
+.btnadicionar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+button {
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white; /* Cor do texto branco */
+  border: none; /* Sem borda */
+  padding: 8px 16px; /* Preenchimento interno */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px; /* Borda arredondada */
+}
+
+button:hover {
+  background-color: #45a049; /* Cor de fundo verde mais escura quando hover */
+}

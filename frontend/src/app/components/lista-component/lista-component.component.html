@@ -1,34 +1,37 @@
 <!-- lista-geral-produtos.component.html -->
 <div>
-    <h2>Listagem Geral de Produtos</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Categoria ID</th>
-          <th>Preço</th>
-          <th>Validade</th>
-          <th>Estoque</th>
-          <th>Perecível</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let produto of produtos">
-          <td>{{ produto.id }}</td>
-          <td>{{ produto.nome }}</td>
-          <td>{{ produto.categoria_id }}</td>
-          <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
-          <td>{{ produto.validade | date:'shortDate' }}</td>
-          <td>{{ produto.estoque }}</td>
-          <td>{{ produto.perecivel ? 'Sim' : 'Não' }}</td>
-          <td>
-            <button (click)="editarProduto(produto)">Editar</button>
-            <button (click)="excluirProduto(produto)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="btnadicionar">
+  <button (click)=" abrirDialog()" >Adicionar Produto</button>
+</div>
+
+  <div class="cabecalho">
+  <h2>Listagem Geral de Produtos</h2>
   </div>
-  
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Validade</th>
+        <th>Estoque</th>
+        <th>Perecível</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos" [ngClass]="{ 'produto-perecivel': produto.perecivel }">
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.categoria }}</td>
+        <td>R$ {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ produto.validade | date:'dd/MM/yyyy' }}</td>
+        <td>{{ produto.estoque }}</td>
+        <td>{{ produto.perecivel ? 'Sim' : 'Não' }}</td>
+        <td>
+          <button (click)="editarProduto">Editar</button>
+          <button (click)="excluirProduto(produto)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

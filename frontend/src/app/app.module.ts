@@ -12,6 +12,7 @@ import { ListaComponentComponent } from './components/lista-component/lista-comp
 import { ProxAvencerComponentComponent } from './components/prox-avencer-component/prox-avencer-component.component';
 import { SidBarComponentComponent } from './components/sid-bar-component/sid-bar-component.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

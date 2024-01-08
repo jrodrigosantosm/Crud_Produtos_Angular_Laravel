@@ -1,0 +1,53 @@
+.geral {
+    display: block;
+    width: 100%;
+  }
+  
+  .geral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     background-color: white;
+  }
+
+  .titulo{ 
+    margin-bottom: 15px;
+  }
+  
+  .geral form {
+    width: 90%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+   
+  }
+  
+  .geral label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .geral input,
+  .geral select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  
+  .geral button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .dialog-content button:hover {
+    background-color: #45a049;
+  }
+  

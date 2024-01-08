@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
 import { Categoria } from '../../models/CategoriasModel';
-import { Observable, of } from 'rxjs';
-import { NgForm } from '@angular/forms';
-
+import { MatDialogRef } from '@angular/material/dialog';
+import { ProdutoService } from '../../services/Produto.service';
+import { ComunicacaoService } from '../../services/comunicacao.service';
 
 
 @Component({
@@ -11,14 +11,26 @@ import { NgForm } from '@angular/forms';
   templateUrl: './model-component.component.html',
   styleUrl: './model-component.component.css'
 })
+
 export class ModelComponentComponent {
   categorias: Categoria[] = [];
   selectedCategoria: string = '';
+  mostrar: boolean = false;
+  novoProduto: any = {};
 
-  constructor(private categoriasService: CategoriaService) {}
+  constructor(
+    private categoriasService: CategoriaService,
+    private produtoService: ProdutoService,
+    public dialogRef: MatDialogRef<ModelComponentComponent>,
+    private comunicacaoService: ComunicacaoService
+    ) {}
 
   ngOnInit(): void {
     this.carregarCategorias();
+  }
+
+  toggle () {
+    this.mostrar = !this.mostrar;
   }
 
   carregarCategorias(): void {
@@ -28,8 +40,22 @@ export class ModelComponentComponent {
   }
 
   adicionarProduto(formValue: any): void {
-    // Implemente a lógica real para adicionar o produto usando os dados do formulário
-    console.log('Novo produto:', formValue);
+    const categoriaSelecionada = this.selectedCategoria;
+    this.novoProduto.nome = formValue.nome;
+    this.novoProduto.preco = formValue.preco;
+    this.novoProduto.estoque = formValue.estoque;
+    this.novoProduto.validade = formValue.validade;
+    this.novoProduto.categoria = formValue.categoria = categoriaSelecionada;
+    this.novoProduto.perecivel = formValue.perecivel === 'Sim'; 
+
+    this.produtoService.adicionarProduto(this.novoProduto).subscribe((response) => {
+      console.log('Novo produto adicionado:', response);
+      this.fecharDialog();
+      this.comunicacaoService.notificarAtualizacaoListaProduto();
+    });
   }
 
+  fecharDialog(): void {
+    this.dialogRef.close();
+  }
 }
