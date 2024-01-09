@@ -4,6 +4,8 @@ import { Produto } from '../../models/ProdutoModel';
 import { ComunicacaoService } from '../../services/comunicacao.service';
 import { ModelComponentComponent } from '../model-component/model-component.component';
 import { MatDialog } from '@angular/material/dialog';
+import { from } from 'rxjs';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-component',
@@ -32,7 +34,9 @@ export class ListaComponentComponent implements OnInit {
   }
 
   editarProduto(produto: Produto) {
-   console.log('esta editando', produto)
+    // this.produtoService.editarProduto(produto.id, produtoAtualizado).subscribe(() => {
+    //   this.carregarProdutos();
+    // });
   }
 
   excluirProduto(produto: Produto): void {

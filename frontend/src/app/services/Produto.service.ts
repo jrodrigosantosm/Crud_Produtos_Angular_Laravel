@@ -26,6 +26,11 @@ export class ProdutoService {
     return this.http.delete<void>(url);
   }
 
+  editarProduto(id: number, produtoAtualizado: Produto): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<void>(url, produtoAtualizado);
+  }
+
   notificarAtualizacaoProduto(): void {
     this.atualizarProdutoSubject.next();
   }
