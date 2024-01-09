@@ -28,7 +28,7 @@
         <td>{{ produto.estoque }}</td>
         <td>{{ produto.perecivel ? 'Sim' : 'Não' }}</td>
         <td>
-          <button (click)="editarProduto">Editar</button>
+          <button (click)="editarProduto(produto)">Editar</button>
           <button (click)="excluirProduto(produto)">Excluir</button>
         </td>
       </tr>

@@ -31,8 +31,8 @@ export class ListaComponentComponent implements OnInit {
     });
   }
 
-  editarProduto() {
-    // Implemente a lógica de edição, se necessário
+  editarProduto(produto: Produto) {
+   console.log('esta editando', produto)
   }
 
   excluirProduto(produto: Produto): void {
