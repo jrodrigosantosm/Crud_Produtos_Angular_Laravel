@@ -20,7 +20,7 @@ export class ListaComponentComponent implements OnInit {
     private comunicacaoService: ComunicacaoService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.comunicacaoService.atualizarListaProduto$.subscribe(() => {
@@ -35,8 +35,7 @@ export class ListaComponentComponent implements OnInit {
   }
 
   editarProduto(produto: Produto) {
-
-    console.log(produto.nome);
+    this.produtoService.editarProduto(produto.id)
   }
 
   excluirProduto(produto: Produto): void {
@@ -48,6 +47,6 @@ export class ListaComponentComponent implements OnInit {
   abrirDialog(): void {
     const dialogRef = this.dialog.open(ModelComponentComponent);
 
-    dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe(() => { });
   }
 }
