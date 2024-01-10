@@ -1,7 +1,7 @@
 /* lista-geral-produtos.component.css ou seu arquivo de estilos global */
 .tabela {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 .tabela th, .tabela td {
