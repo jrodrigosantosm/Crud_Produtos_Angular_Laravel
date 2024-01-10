@@ -5,12 +5,12 @@ import { ComunicacaoService } from '../../services/comunicacao.service';
 import { ModelComponentComponent } from '../model-component/model-component.component';
 import { MatDialog } from '@angular/material/dialog';
 import { from } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';  // Importe FormGroup corretamente
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-component',
   templateUrl: './lista-component.component.html',
-  styleUrls: ['./lista-component.component.css']
+  styleUrls: ['./lista-component.component.css'],
 })
 export class ListaComponentComponent implements OnInit {
   produtos: Produto[] = [];
@@ -19,13 +19,12 @@ export class ListaComponentComponent implements OnInit {
     private produtoService: ProdutoService,
     private comunicacaoService: ComunicacaoService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder,
-
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.comunicacaoService.atualizarListaProduto$.subscribe(() => {
-    this.carregarProdutos();
+      this.carregarProdutos();
     });
   }
 
@@ -36,7 +35,8 @@ export class ListaComponentComponent implements OnInit {
   }
 
   editarProduto(produto: Produto) {
-   
+
+    console.log(produto.nome);
   }
 
   excluirProduto(produto: Produto): void {
@@ -46,9 +46,8 @@ export class ListaComponentComponent implements OnInit {
   }
 
   abrirDialog(): void {
-    const dialogRef = this.dialog.open(ModelComponentComponent,);
+    const dialogRef = this.dialog.open(ModelComponentComponent);
 
-    dialogRef.afterClosed().subscribe(() => {
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }
