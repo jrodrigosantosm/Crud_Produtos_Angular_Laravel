@@ -4,8 +4,6 @@ import { Produto } from '../../models/ProdutoModel';
 import { ComunicacaoService } from '../../services/comunicacao.service';
 import { ModelComponentComponent } from '../model-component/model-component.component';
 import { MatDialog } from '@angular/material/dialog';
-import { from } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-component',
@@ -14,19 +12,42 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ListaComponentComponent implements OnInit {
   produtos: Produto[] = [];
+  produto: any;
+  categorias: string[] = [];
+  id: any;
 
   constructor(
     private produtoService: ProdutoService,
     private comunicacaoService: ComunicacaoService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.comunicacaoService.atualizarListaProduto$.subscribe(() => {
       this.carregarProdutos();
     });
-  }
+    this.produtoService.editarProduto(this.id).subscribe(
+      (dados) => {
+        this.produto = dados; 
+        this.preencherCampos(this.id);
+      },
+      (erro) => {
+        console.error('Erro ao obter dados do produto:', erro);
+      }
+    );
+}
+
+preencherCampos(id: number) {
+  this.abrirDialog();
+   this.produto.setValue({
+    nome: this.produto.nome,
+    preco: this.produto.preco,
+    estoque: this.produto.estoque,
+    validade: this.produto.validade,
+    perecivel: this.produto.perecivel,
+    categoria_no: this.produto.categoria_id
+  });
+}
 
   carregarProdutos(): void {
     this.produtoService.getProdutos().subscribe((produtos) => {
