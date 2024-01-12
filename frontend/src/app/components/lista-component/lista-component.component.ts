@@ -26,28 +26,9 @@ export class ListaComponentComponent implements OnInit {
     this.comunicacaoService.atualizarListaProduto$.subscribe(() => {
       this.carregarProdutos();
     });
-    this.produtoService.editarProduto(this.id).subscribe(
-      (dados) => {
-        this.produto = dados; 
-        this.preencherCampos(this.id);
-      },
-      (erro) => {
-        console.error('Erro ao obter dados do produto:', erro);
-      }
-    );
+
 }
 
-preencherCampos(id: number) {
-  this.abrirDialog();
-   this.produto.setValue({
-    nome: this.produto.nome,
-    preco: this.produto.preco,
-    estoque: this.produto.estoque,
-    validade: this.produto.validade,
-    perecivel: this.produto.perecivel,
-    categoria_no: this.produto.categoria_id
-  });
-}
 
   carregarProdutos(): void {
     this.produtoService.getProdutos().subscribe((produtos) => {
@@ -56,18 +37,20 @@ preencherCampos(id: number) {
   }
 
   editarProduto(produto: Produto) {
-    this.produtoService.editarProduto(produto.id)
+    const dialogRef = this.dialog.open(ModelComponentComponent, {
+      data: { id: produto.id }
+    });
   }
 
   excluirProduto(produto: Produto): void {
     this.produtoService.excluirProduto(produto.id).subscribe(() => {
       this.carregarProdutos();
+      console.log(produto)
     });
   }
 
   abrirDialog(): void {
     const dialogRef = this.dialog.open(ModelComponentComponent);
-
     dialogRef.afterClosed().subscribe(() => { });
   }
 }

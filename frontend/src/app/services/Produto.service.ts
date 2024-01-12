@@ -9,7 +9,6 @@ import { Produto } from '../models/ProdutoModel';
 })
 export class ProdutoService {
   private apiUrl = 'http://127.0.0.1:8000/api/produtos';
-  private atualizarProdutoSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
@@ -26,13 +25,9 @@ export class ProdutoService {
     return this.http.delete<void>(url);
   }
 
-  editarProduto(id: number): Observable<void> {
+  editarProduto(id: number, produtoAtualizado: Produto): Observable<Produto> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.put<void>(url,"");
+    return this.http.put<Produto>(url, produtoAtualizado);
   }
-
-  notificarAtualizacaoProduto(): void {
-    this.atualizarProdutoSubject.next();
-  }
-
+  
 }

@@ -2,32 +2,30 @@
   <h2 class="titulo">Adicionar Novo Produto</h2>
   <form class="form" #produtoForm="ngForm" (ngSubmit)="adicionarProduto(produtoForm.value)">
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" ngModel required>
+    <input type="text" id="nome" name="nome" [(ngModel)]="novoProduto.nome" required>
 
     <label for="preco">Preço:</label>
-    <input type="number" id="preco" name="preco" ngModel required>
+    <input type="number" id="preco" name="preco" [(ngModel)]="novoProduto.preco" required>
 
     <label for="estoque">Estoque:</label>
-    <input type="number" id="estoque" name="estoque" ngModel required>
+    <input type="number" id="estoque" name="estoque" [(ngModel)]="novoProduto.estoque" required>
 
     <label for="validade">Validade:</label>
-    <input type="date" id="validade" name="validade" ngModel required>
+    <input type="date" id="validade" name="validade" [(ngModel)]="novoProduto.validade" required>
 
     <label for="perecivel">Perecível:</label>
-    <select id="perecivel" name="perecivel" ngModel required>
+    <select id="perecivel" name="perecivel" [(ngModel)]="novoProduto.perecivel" required>
       <option value="Sim">Sim</option>
       <option value="Não">Não</option>
     </select>
 
-    <label for="categoria_id">Categoria:</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01"></label>
-      </div>
-      <select class="custom-select" id="categoria" [(ngModel)]="selectedCategoria" for="categoria" name="categoria_no" required>
-        <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+    <div class="form-group">
+      <label for="categoria">Categoria:</label>
+      <select [(ngModel)]="selectedCategoria" name="categoria">
+         <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
       </select>
-    </div>
+   </div>
+   
     
     <button type="submit">Adicionar Produto</button>
   </form>
