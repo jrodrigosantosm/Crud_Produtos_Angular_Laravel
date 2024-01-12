@@ -87,7 +87,7 @@ export class ModelComponentComponent {
   }
 
   carregarInformacoesProduto(id: number): void {
-    this.produtoService.editarProduto(id).subscribe((produto) => {
+    this.produtoService.editarProduto(id, this.novoProduto).subscribe((produto) => {
       if (produto) {
         this.novoProduto.nome = produto.nome;
         this.novoProduto.preco = produto.preco;
