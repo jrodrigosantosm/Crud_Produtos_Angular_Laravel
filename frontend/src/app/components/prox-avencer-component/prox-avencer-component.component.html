@@ -1,8 +1,17 @@
-<div>
-    <h2>Lista de Produtos Próximos a Vencer</h2>
-    <ul>
-      <li *ngFor="let produto of produtos">
-        {{ produto.nome }} - Vencimento: {{ produto.validade | date:'shortDate' }}
-      </li>
-    </ul>
-  </div>
+<div class="geral">
+  <h2 class="titulo">Lista de Produtos Próximos a Vencer</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Produto</th>
+        <th>Vencimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.validade | date:'shortDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

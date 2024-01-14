@@ -1,0 +1,25 @@
+.geral {
+    max-width: 600px; /* ou qualquer outra largura desejada */
+    margin: 0 auto; /* Centraliza a div na tela */
+  }
+
+  .titulo{
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Ajuste conforme necessário */
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
