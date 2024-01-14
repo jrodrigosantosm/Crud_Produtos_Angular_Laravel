@@ -1,5 +1,4 @@
 <div class="geral">
-  <h2 class="titulo">Adicionar Novo Produto</h2>
   <form class="form" #produtoForm="ngForm" (ngSubmit)="adicionarProduto(produtoForm.value)">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" [(ngModel)]="novoProduto.nome" required>

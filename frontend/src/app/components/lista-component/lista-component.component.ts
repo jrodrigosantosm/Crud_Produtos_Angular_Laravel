@@ -45,7 +45,6 @@ export class ListaComponentComponent implements OnInit {
   excluirProduto(produto: Produto): void {
     this.produtoService.excluirProduto(produto.id).subscribe(() => {
       this.carregarProdutos();
-      console.log(produto)
     });
   }
 
